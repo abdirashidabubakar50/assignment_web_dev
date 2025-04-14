@@ -1,5 +1,6 @@
+Here’s the corrected and properly formatted README.md:
 
-```markdown
+``
 # Contact Form Submission Project
 
 This is a simple contact form web project built using **HTML**, **CSS**, **JavaScript (AJAX)**, **PHP**, and **MySQL**.  
@@ -11,20 +12,12 @@ It allows users to submit their contact details and a message, which gets saved 
 
 ```
 assignment_web_dev/
-
-│
 ├── Contacts.html     # Form UI (HTML)
-
 ├── Contacts.css      # Form styling (CSS)
-
 ├── script.js         # AJAX form submission logic
-
 ├── Contacts.php      # Handles form POST data (server-side)
-
 ├── view.php          # Displays submitted messages from the database
-
 └── README.md         # Project documentation
-
 ```
 
 ---
@@ -39,7 +32,7 @@ assignment_web_dev/
 
 ---
 
-## 🧠 PHP Code Overview
+## � PHP Code Overview
 
 ### 📩 `Contacts.php`
 
@@ -49,15 +42,18 @@ Handles AJAX POST requests. It:
 3. Inserts the form data into the `contacts` table.
 
 ```php
+<?php
 $conn = new mysqli("localhost", "root", "", "contact_form");
 
 // Sanitize inputs
 $name = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
 $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
-...
+// ... similar for other fields
+
 $stmt = $conn->prepare("INSERT INTO contacts (name, email, subject, message) VALUES (?, ?, ?, ?)");
 $stmt->bind_param("ssss", $name, $email, $subject, $message);
 $stmt->execute();
+?>
 ```
 
 ---
@@ -67,10 +63,14 @@ $stmt->execute();
 Connects to the database and displays all form submissions in an HTML table.
 
 ```php
+<?php
+$conn = new mysqli("localhost", "root", "", "contact_form");
 $result = $conn->query("SELECT * FROM contacts ORDER BY created_at DESC");
+
 while ($row = $result->fetch_assoc()) {
     echo "<tr><td>{$row['name']}</td><td>{$row['email']}</td>...</tr>";
 }
+?>
 ```
 
 ---
@@ -102,13 +102,13 @@ CREATE TABLE contacts (
 ```
 
 5. Visit the form page in your browser:
-```
+```url
 http://localhost/assignment_web_dev/Contacts.html
 ```
 
 ---
 
-### 🧑‍💻 Option 2: Using Command Line (CLI / WSL / Linux / Mac)
+### 🧑💻 Option 2: Using Command Line (CLI / WSL / Linux / Mac)
 
 1. Navigate to the project directory:
 ```bash
@@ -145,7 +145,7 @@ CREATE TABLE contacts (
 ```
 
 5. Open the form in your browser:
-```
+```url
 http://localhost:8000/Contacts.html
 ```
 
@@ -155,6 +155,6 @@ http://localhost:8000/Contacts.html
 
 - **"mysqli not found"** – Make sure PHP's `mysqli` extension is enabled.
 - **"Access denied for user 'root'"** – Check your DB username/password in `Contacts.php`.
-- **"Method Not Allowed" (405)** – AJAX might be pointing to the wrong file path or using incorrect method.
-
----
+- **"Method Not Allowed (405)"** – Ensure AJAX points to the correct file path and uses the POST method.
+- **Form submissions not saving** – Verify the MySQL table structure matches the code.
+```
