@@ -1,0 +1,55 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: gainsboro;
+    height: 100vh;
+    display: flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+
+}
+
+.form_class {
+    width: 500px;
+    margin: auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    background-color: white;
+}
+
+.form_class form{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+
+
+.form_class input{
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+.form_class textarea{
+    margin-bottom: 5px;
+    padding: 5px;
+}
+
+button{
+    width: 50%;
+    margin-top: 10px;
+    padding: 8px;
+    cursor: pointer;
+    background-color:blue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+button:hover{
+    background-color: darkblue;
+}
