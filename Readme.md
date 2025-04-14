@@ -9,7 +9,7 @@ It allows users to submit their contact details and a message, which gets saved 
 
 ## 🗂️ Files Structure
 
-
+```
 assignment_web_dev/
 
 │
@@ -25,6 +25,7 @@ assignment_web_dev/
 
 └── README.md         # Project documentation
 
+```
 
 ---
 
