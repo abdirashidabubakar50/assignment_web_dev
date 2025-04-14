@@ -1,4 +1,3 @@
-Here’s the corrected and properly formatted README.md:
 
 ``
 # Contact Form Submission Project
