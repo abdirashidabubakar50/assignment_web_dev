@@ -1,9 +1,18 @@
 <?php
 // Database config
-$host = 'localhost';
-$db = 'contact_form';
-$user = 'root';
-$pass = 'root';
+require_once __DIR__ . '/vendor/autoload.php';
+
+use Dotenv\Dotenv;
+
+// Load the .env file for environment variables
+$dotenv = Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
+// Now use the environment variables
+$host = $_ENV['DB_HOST'];
+$db   = $_ENV['DB_DATABASE'];
+$user = $_ENV['DB_USERNAME'];
+$pass = $_ENV['DB_PASSWORD'];
 
 // Connect to DB
 $conn = new mysqli($host, $user, $pass, $db);
