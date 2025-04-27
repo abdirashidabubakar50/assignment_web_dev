@@ -1,5 +1,19 @@
 <?php
-$conn = new mysqli("localhost", "root", "root", "contact_form");
+require_once __DIR__ . '/vendor/autoload.php';
+
+use Dotenv\Dotenv;
+
+// Load the .env file for environment variables
+$dotenv = Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
+// Now use the environment variables
+$host = $_ENV['DB_HOST'];
+$db   = $_ENV['DB_DATABASE'];
+$user = $_ENV['DB_USERNAME'];
+$pass = $_ENV['DB_PASSWORD'];
+
+$conn = new mysqli($host, $user, $pass, $db);
 if ($conn->connect_error) die("Connection failed");
 
 $result = $conn->query("SELECT * FROM submissions ORDER BY submitted_at DESC");
@@ -12,6 +26,9 @@ $result = $conn->query("SELECT * FROM submissions ORDER BY submitted_at DESC");
     <style>
         table {
             width: 90%;
+
+
+            
             border-collapse: collapse;
             margin: 20px auto;
         }
